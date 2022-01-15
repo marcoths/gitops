@@ -1,4 +1,4 @@
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: gitops-cron
@@ -19,4 +19,4 @@ spec:
             command: [sh, -e, -c]                    #H
             args:
             - git clone https://github.com/marcoths/gitops.git /tmp/example &&
-              find /tmp/example/gitops-operator -name '*.yaml' -exec kubectl apply -f {} \;
+              find /tmp/example/my-app -name '*.yaml' -exec kubectl apply -f {} \;
